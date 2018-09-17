@@ -32,16 +32,25 @@ class ObjectsController extends AbstractController
     }
 
     /**
-     * @Route("/{category}", name="objects_byCategory", methods="GET|POST")
+     * @Route("/categorie/{category}", name="objects_byCategory", methods="GET|POST")
      */
-    public function byCategory(ObjectsRepository $objectsRepository, $category) {
-        return $this->render('objects/index.html.twig', [
-            'objects' => $objectsRepository->findBy(
-                array('received' => false),
-                array('categorie' => $category),
-                array('id' => 'DESC')
-            ),
+    public function byCategory($category, ObjectsRepository $objectsRepository) {
+
+        $objectsFrom = $objectsRepository->findBy(
+            ['categorie' => $category]
+        );
+
+        return $this->render('objects/category.html.twig', [
+            'objects' => $objectsFrom,
         ]);  
+
+        // return $this->render('objects/category.html.twig', [
+        //     'objects' => $objectsRepository->findBy(
+        //         array('received' => false),
+        //         array('categorie' => $category),
+        //         array('id' => 'DESC')
+        //     ),
+        // ]);  
     }
 
     /**

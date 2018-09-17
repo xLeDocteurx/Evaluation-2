@@ -20,6 +20,7 @@ class ObjectsType extends AbstractType
             ->add('description')
             ->add('categorie', ChoiceType::class, array(
                 'choices' => array(
+                    'Autres' => 'Autres',
                     'Vestes' => 'Vetements',
                     'Pantalons' => 'Vetements',
                     'Chaussures' => 'Vetements',
