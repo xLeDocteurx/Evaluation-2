@@ -36,8 +36,9 @@
                     </table>
 
 
-                    <form action="{{ path('objects_show', {'id':object.id, 'user': app.user }) }}" method="POST">
-                    <button class="waves-effect waves-light btn" type="submit">Je suis interessé</button>
+                    <form action="{{ path('objects_pretend') }}" method="POST">
+                        <input class="hide" name="objectId" type="number" value="{{ object.id }}">
+                        <button class="waves-effect waves-light btn" type="submit">Je suis interessé</button>
                     </form>
                 </div>
             </div>
