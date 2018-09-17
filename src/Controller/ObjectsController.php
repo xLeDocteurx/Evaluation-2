@@ -99,6 +99,29 @@ class ObjectsController extends AbstractController
     }
 
     /**
+     * @Route("/dontpretend" , name="objects_dontpretend" , methods="GET|POST")
+     */
+    public function dontpretend(Request $request): Response 
+    {
+            $user = $this->getUser();
+        // if (isset($_POST['user'])) {
+            
+            $object = $this->getDoctrine()
+            ->getRepository(Objects::class)
+            ->findOneById($_POST['objectId']);
+
+            $object->removePretender($user);
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($object);
+            $em->flush();
+        // }
+
+        // return $this->redirectToRoute('objects_show', ['id' => $objectId]);
+        return $this->redirectToRoute('objects_show', ['id' => $object->getId()]);
+    }
+
+    /**
      * @Route("/{id}", name="objects_show", methods="GET|POST")
      */
     public function show(Objects $object): Response
