@@ -19,7 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class ObjectsController extends AbstractController
 {
     /**
-     * @Route("/", name="objects_index", methods="GET")
+     * @Route("/", name="objects_index", methods="GET|POST")
      */
     public function index(ObjectsRepository $objectsRepository): Response
     {
@@ -29,6 +29,19 @@ class ObjectsController extends AbstractController
                 array('id' => 'DESC')
             ),
         ]);
+    }
+
+    /**
+     * @Route("/{category}", name="objects_byCategory", methods="GET|POST")
+     */
+    public function byCategory(ObjectsRepository $objectsRepository, $category) {
+        return $this->render('objects/index.html.twig', [
+            'objects' => $objectsRepository->findBy(
+                array('received' => false),
+                array('categorie' => $category),
+                array('id' => 'DESC')
+            ),
+        ]);  
     }
 
     /**
@@ -42,6 +55,21 @@ class ObjectsController extends AbstractController
         );
 
         return $this->render('objects/mine.html.twig', [
+            'objects' => $userObjects,
+        ]);
+    }
+
+    /**
+     * @Route("/wanted", name="objects_wanted", methods="GET")
+     */
+    public function wanted() {
+
+        $user = $this->getUser();
+        $userObjects = $user->getPretendingObjects(
+            array('id' => 'DESC')
+        );
+
+        return $this->render('objects/wanted.html.twig', [
             'objects' => $userObjects,
         ]);
     }

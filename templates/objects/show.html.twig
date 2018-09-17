@@ -30,7 +30,7 @@
                                 <th>Postulants</th>
                                 <td>
                                 {% for user in object.pretenders %}
-                                    {{ user.username }} ,
+                                    <a href="{{ path('users_show' ,{'id':user.id }) }}">{{ user.username }}</a> ,
                                 {% else %}
                                     Personne n'est encore interessé par ce don
                                 {% endfor %}

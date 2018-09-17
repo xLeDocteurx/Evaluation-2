@@ -5,29 +5,49 @@
 {% block body %}
     <h1 class="center align">Liste des dons</h1>
 
+    {# <form action="" method="POST">
+        <div class="input-field teal lighten-2">
+            <input class="text-white" id="search" type="search" value="Recherchez un objet" required>
+        </div>
+    </form> #}
+
+    <div class="row">
+        <div class="col s12">
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a href="#!">Vetements</a></li>
+                <li><a href="#!">Maison</a></li>
+                <li><a href="#!">Jardin</a></li>
+                <li><a href="#!">Animaux</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">Autres</a></li>
+            </ul>
+            <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Tier par catégorie<i class="material-icons right">arrow_drop_down</i></a>
+        </div>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Image</th>
-                <th>Title</th>
+                {# <th>Id</th> #}
+                <th></th>
+                <th>Titre</th>
                 <th>Description</th>
                 <th>Categorie</th>
-                <th>Received</th>
-                <th>actions</th>
+                <th>Disponible</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for object in objects %}
             <tr>
-                <td>{{ object.id }}</td>
+                {# <td>{{ object.id }}</td> #}
                 <td><img class="index_image" src="{{ object.imageURL }}" alt=""></td>
                 <td>{{ object.title }}</td>
                 <td>{{ object.description }}</td>
                 <td>{{ object.categorie }}</td>
-                <td>{{ object.received ? 'Yes' : 'No' }}</td>
+                <td>{{ object.received ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a class="waves-effect waves-light btn" href="{{ path('objects_show', {'id': object.id}) }}">show</a>
+                    <a class="waves-effect waves-light btn" href="{{ path('objects_show', {'id': object.id}) }}">Voir</a>
                     {# <a class="waves-effect waves-light btn" href="{{ path('objects_edit', {'id': object.id}) }}">edit</a> #}
                 </td>
             </tr>

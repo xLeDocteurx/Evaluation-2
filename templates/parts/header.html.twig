@@ -8,8 +8,9 @@
                 <ul id="nav-mobile-l" class="left hide-on-med-and-down">
                         <li class="{{ app.request.get('_route') == 'posts_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('posts_index') }}" title="">News</a></li>
                     {% if app.user %}
-                        <li class="{{ app.request.get('_route') == 'objects_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_index') }}" title="">Dons</a></li>
+                        <li class="{{ app.request.get('_route') == 'objects_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_index') }}" title="">Les Dons</a></li>
                         <li class="{{ app.request.get('_route') == 'objects_mine' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_mine') }}" title="">Mes Annonces</a></li>
+                        <li class="{{ app.request.get('_route') == 'objects_wanted' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_wanted') }}" title="">Mes voeux</a></li>
                         {# <li class="{{ app.request.get('_route') == 'xxx' ? 'active' : '' }}"><a class="disabled" href="" title="">Bottles sent</a></li> #}
                     {% else %}
                     {% endif %}
@@ -42,9 +43,10 @@
 <ul class="sidenav" id="mobile-demo">
             <li class="{{ app.request.get('_route') == 'posts_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('posts_index') }}" title="">News</a></li>
         {% if app.user %}
-                        <li class="{{ app.request.get('_route') == 'objects_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_index') }}" title="">Dons</a></li>
-                        <li class="{{ app.request.get('_route') == 'objects_mine' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_mine') }}" title="">Mes Annonces</a></li>
-                        {# <li class="{{ app.request.get('_route') == 'xxx' ? 'active' : '' }}"><a class="disabled" href="" title="">Bottles sent</a></li> #}
+            <li class="{{ app.request.get('_route') == 'objects_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_index') }}" title="">Les Dons</a></li>
+            <li class="{{ app.request.get('_route') == 'objects_mine' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_mine') }}" title="">Mes Annonces</a></li>
+            <li class="{{ app.request.get('_route') == 'objects_wanted' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_wanted') }}" title="">Mes voeux</a></li>
+            {# <li class="{{ app.request.get('_route') == 'xxx' ? 'active' : '' }}"><a class="disabled" href="" title="">Bottles sent</a></li> #}
         {% else %}
         {% endif %}
     <div class="hide-on-med-and-up">
