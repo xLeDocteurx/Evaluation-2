@@ -1,0 +1,63 @@
+<header class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="">
+                
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                <ul id="nav-mobile-l" class="left hide-on-med-and-down">
+                        <li class="{{ app.request.get('_route') == 'posts_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('posts_index') }}" title="">News</a></li>
+                    {% if app.user %}
+                        <li class="{{ app.request.get('_route') == 'objects_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_index') }}" title="">Dons</a></li>
+                        <li class="{{ app.request.get('_route') == 'objects_mine' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_mine') }}" title="">Mes Annonces</a></li>
+                        {# <li class="{{ app.request.get('_route') == 'xxx' ? 'active' : '' }}"><a class="disabled" href="" title="">Bottles sent</a></li> #}
+                    {% else %}
+                    {% endif %}
+                </ul>
+
+                <a class="center brand-logo hide-on-small-and-down" href="{{ path('acceuil') }}" title="ABITS - A Bottle Into The Sea">EVAL</a>
+                <a class="center brand-logo hide-on-med-and-up" href="{{ path('acceuil') }}" title="ABITS - A Bottle Into The Sea"><i class="material-icons">message</i></a>
+
+                <ul id="nav-mobile-r" class="right hide-on-small-and-down">
+                    {% if app.user %}
+                        <li class="{{ app.request.get('_route') == 'users_index' ? 'active' : '' }}"><a href="{{ path('users_show', {'id':app.user.id}) }}" title="">Profile : {{ app.user.username }}
+                            {# <img class="header_avatar" src="{{ app.user.avatar }}" alt=""> #}
+                        </a></li>
+                        {# <li class="{{ app.request.get('_route') == 'users_index' ? 'active' : '' }}"><a href="{{ path('users_index') }}" title="">Profile : {{ app.user.username }}<img class="header_avatar" src="{{ app.user.avatar }}" alt=""></a></li> #}
+                        <li class=""><a href="{{ path('users_logout') }}" title="Log Out">Log Out</a></li>
+                    {% else %}
+                        <li class="{{ app.request.get('_route') == 'users_login' ? 'active' : '' }}"><a href="{{ path('users_login') }}" title="">Log In</a></li>
+                        <li class="{{ app.request.get('_route') == 'users_new' ? 'active' : '' }}"><a href="{{ path('users_new') }}" title="">Register</a></li>
+                    {% endif %}
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+<ul class="sidenav" id="mobile-demo">
+            <li class="{{ app.request.get('_route') == 'posts_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('posts_index') }}" title="">News</a></li>
+        {% if app.user %}
+                        <li class="{{ app.request.get('_route') == 'objects_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_index') }}" title="">Dons</a></li>
+                        <li class="{{ app.request.get('_route') == 'objects_mine' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_mine') }}" title="">Mes Annonces</a></li>
+                        {# <li class="{{ app.request.get('_route') == 'xxx' ? 'active' : '' }}"><a class="disabled" href="" title="">Bottles sent</a></li> #}
+        {% else %}
+        {% endif %}
+    <div class="hide-on-med-and-up">
+        <hr class="">
+        {% if app.user %}
+            <li class="{{ app.request.get('_route') == 'users_index' ? 'active' : '' }}"><a href="{{ path('users_show', {'id':app.user.id}) }}" title="">Profile : {{ app.user.username }}
+                {# <img class="header_avatar" src="{{ app.user.avatar }}" alt=""> #}
+            </a></li>
+            {# <li class="{{ app.request.get('_route') == 'users_index' ? 'active' : '' }}"><a href="{{ path('users_index') }}" title="">Profile : {{ app.user.username }}<img class="header_avatar" src="{{ app.user.avatar }}" alt=""></a></li> #}
+            <li class=""><a href="{{ path('users_logout') }}" title="Log Out">Log Out</a></li>
+        {% else %}
+            <li class="{{ app.request.get('_route') == 'users_login' ? 'active' : '' }}"><a href="{{ path('users_login') }}" title="">Log In</a></li>
+            <li class="{{ app.request.get('_route') == 'users_new' ? 'active' : '' }}"><a href="{{ path('users_new') }}" title="">Register</a></li>
+        {% endif %}
+    </div>
+</ul>

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Posts index{% endblock %}
+
+{% block body %}
+    <h1 class="center-align">Welcome to EVAL !</h1>
+
+        {% for post in posts %}
+            <div class="row">
+                <div class="col s12 m10 offset-m1">
+                    <div class="card hoverable">
+                        <div class="card-image card-image-index">
+                            <a href="{{ path('posts_show', {'id': post.id}) }}"><img src="{{ asset('images/sample-0.jpg') }}" alt="Card Image">
+                            <span class="card-title">#{{ post.id }} : {{ post.title }}</span></a>
+                            {# <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> #}
+                        </div>
+                        <div class="card-content">
+                            {{ post.date ? post.date|date('Y-m-d H:i:s') : '' }} / By : <a href="{{ path('users_show', {'id': post.author.id}) }}">{{ post.author.username }}</a>
+                            <p>{{ post.content }}</p>
+                        </div>
+                        <div class="card-action">
+                            {# <a href="{{ path('posts_show', {'id': post.id}) }}">show</a> #}
+                            <a class="waves-effect waves-light btn" href="{{ path('posts_edit', {'id': post.id}) }}">edit</a>
+                            {{ include('posts/_delete_form.html.twig') }}
+                            {# <a href="{{ path('posts_delete', {'id': post.id}) }}">delete</a> #}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+
+    <a class="waves-effect waves-light btn" href="{{ path('posts_new') }}">Create new</a>
+{% endblock %}

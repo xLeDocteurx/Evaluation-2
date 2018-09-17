@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+
+<h1 class="center-align">Acceuil</h1>
+
+<div class="row">
+    <div class="col s10 offset-s1">
+        <div class="card">
+            <div class="card-content">
+{% if app.user %}
+                <p>
+                    <h2 class="center-align">Welcome {{ app.user.username }} !</h2>
+
+                </p>
+{% else %}
+                <p>
+                    <h2 class="center-align">Bienvenu Ne jettez plus !</h2>
+                    <h3 class="center-align">Vous n'êtes pas connecté</h3>
+                
+                </p>
+{% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Objects{% endblock %}
+
+{% block body %}
+    <h1>Edit Objects</h1>
+
+    {{ include('objects/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('objects_index') }}">back to list</a>
+
+    {{ include('objects/_delete_form.html.twig') }}
+{% endblock %}

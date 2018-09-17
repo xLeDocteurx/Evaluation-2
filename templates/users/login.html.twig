@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <h1>Log In</h1>
+
+
+
+<form name="log_in" method="post" action="{{ path('users_login') }}">
+
+    <div>
+        <label for="log_in_email" class="required">
+            Email
+        </label>
+        <input type="text" id="log_in_email" name="_username" required="required" maxlength="255">
+    </div>
+
+    <div>
+        <label for="log_in_password" class="required">
+            Password
+        </label>
+        <input type="password" id="log_in_password" name="_password" required="required">
+    </div>
+
+    <div id="log_in"><input type="hidden" id="log_in__token" name="log_in[_token]" value="lE_CYyFiqu92ZRiENKU3NB0LkTtzGIvqjNm3hDRzp5s"></div>
+
+    <button type="submit" class="waves-effect waves-light btn">Log In</button>
+</form>
+
+    {# {{ include('users/_login_form.html.twig') }} #}
+
+
+{% endblock %}

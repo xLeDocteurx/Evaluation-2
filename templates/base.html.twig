@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Ne jettez plus - {% block title %}This is not an Eval Parody{% endblock %}</title>
+        {% block stylesheets %}
+            <!--Import Google Icon Font-->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+            <!--Import Font Awesome-->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+                crossorigin="anonymous">
+
+            <!--Import materialize.css-->
+            <link type="text/css" rel="stylesheet" href="{{ asset('frameworks/materialize/css/materialize.min.css') }}" media="screen,projection" />
+
+            <!--Let browser know website is optimized for mobile-->
+            <link rel="shortcut icon" type="image/png" href="logo.png">
+
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+    </head>
+    
+    <body class="">
+    {{ include('parts/header.html.twig') }}
+        {% block body %}
+        
+        {% endblock %}
+        {% block javascripts %}
+            <!--JavaScript at end of body for optimized loading-->
+            <script type="text/javascript" src="{{ asset('frameworks/jquery/jquery-3.3.1.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('frameworks/materialize/js/materialize.min.js') }}"></script>
+            <script src="{{ asset('js/scripts.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

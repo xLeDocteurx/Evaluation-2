@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des dons{% endblock %}
+
+{% block body %}
+    <h1 class="center align">Liste des dons</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Categorie</th>
+                <th>Received</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for object in objects %}
+            <tr>
+                <td>{{ object.id }}</td>
+                <td><img class="index_image" src="{{ object.imageURL }}" alt=""></td>
+                <td>{{ object.title }}</td>
+                <td>{{ object.description }}</td>
+                <td>{{ object.categorie }}</td>
+                <td>{{ object.received ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a class="waves-effect waves-light btn" href="{{ path('objects_show', {'id': object.id}) }}">show</a>
+                    {# <a class="waves-effect waves-light btn" href="{{ path('objects_edit', {'id': object.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('objects_new') }}">Create new</a>
+{% endblock %}

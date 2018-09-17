@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+
+    {{ form_row(form.email,
+        {'full_name':'_username'}, 
+        {'label': 'Email adress', 'attr': {'placeholder':'Your email adress...'}}
+    )}}
+
+    {{ form_row(form.password, 
+        {'full_name':'_password'},
+        {'label': 'Password', 'attr': {'placeholder':'Your password...'}}
+    )}}
+
+    {{ form_widget(form) }}
+    <button class="waves-effect waves-light btn">{{ button_label|default('Log In') }}</button>
+{{ form_end(form) }}

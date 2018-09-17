@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Objects{% endblock %}
+
+{% block body %}
+    <h1>Create new Objects</h1>
+
+    <input type="text" value="{{ app.user.username }}" disabled>
+
+    {{ include('objects/_form.html.twig') }}
+
+    <a href="{{ path('objects_index') }}">back to list</a>
+{% endblock %}

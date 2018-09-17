@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Users{% endblock %}
+
+{% block body %}
+    <h1>Edit User</h1>
+
+    <div>
+        <label for="posts_author" class="required active">Username</label>
+        <input type="text" id="posts_author" name="posts[author]" maxlength="255" value="{{ user.username }}" disabled>
+    </div>
+
+    {{ include('users/_form.html.twig', {'button_label': 'Update'}) }}
+    <br>
+    {{ include('users/_delete_form.html.twig') }}
+
+    <a href="{{ path('users_index') }}">back to list</a>
+
+{% endblock %}

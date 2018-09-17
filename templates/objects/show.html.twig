@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Objects{% endblock %}
+
+{% block body %}
+    <h1 class="center-align">{{ object.title }}</h1>
+
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <div class="card">
+                <div class="card-image">
+                    <img class="show_image" src="{{ object.imageURL }}" alt="">
+                    <span class="card-title black-text">{{ object.title }}</span>
+                </div>
+                <div class="card-content">
+                    {{ object.description }}
+                </div>
+                <div class="card-action">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Categorie</th>
+                                <td>{{ object.categorie }}</td>
+                            </tr>
+                            <tr>
+                                <th>Postulants</th>
+                                <td>
+                                {% for user in object.pretenders %}
+                                    {{ user.username }} ,
+                                {% else %}
+                                    Personne n'est encore interessé par ce don
+                                {% endfor %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <form action="{{ path('objects_show', {'id':object.id, 'user': app.user }) }}" method="POST">
+                    <button class="waves-effect waves-light btn" type="submit">Je suis interessé</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="{{ path('objects_index') }}">back to list</a>
+
+    <a href="{{ path('objects_edit', {'id': object.id}) }}">edit</a>
+
+    {{ include('objects/_delete_form.html.twig') }}
+{% endblock %}

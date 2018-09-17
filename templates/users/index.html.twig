@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users index{% endblock %}
+
+{% block body %}
+    <h1>Users index</h1>
+
+        {% for user in users %}
+
+
+    <div class="col s12 m7">
+        <div class="card small horizontal hoverable">
+            <div class="card-image">
+                <a href="{{ path('users_show', {'id': user.id}) }}"><img src="{{ user.avatar ? user.avatar : '/images/yuna.jpg' }}" alt="Card Image">
+                <span class="card-title">#{{ user.id }} : {{ user.username }}</span></a>
+                {{ user.country }}
+                {# <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> #}
+            </div>
+            <div class="card-stacked">
+                <span class="card-title">#{{ user.id }} : {{ user.username }}</span>
+                <div class="card-content">
+                    <p>Bio : {{ user.bio }}</p>
+                </div>
+                <div class="card-action">
+                    Confirmed : {{ user.confirmed ? 'Yes' : 'No' }}
+                    Author : {{ user.author }}
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                
+                
+                <td>
+                    <a href="{{ path('users_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+
+    <a href="{{ path('users_new') }}">Create new</a>
+{% endblock %}
