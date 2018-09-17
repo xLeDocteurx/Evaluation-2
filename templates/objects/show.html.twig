@@ -39,17 +39,22 @@
                         </tbody>
                     </table>
 
-                {% if app.user in object.pretenders %}
-                    <form action="{{ path('objects_dontpretend') }}" method="POST">
-                        <input class="hide" name="objectId" type="number" value="{{ object.id }}">
-                        <button class="waves-effect waves-light btn" type="submit">Je ne suis plus interessé</button>
-                    </form>
-                {% else %}
-                    <form action="{{ path('objects_pretend') }}" method="POST">
-                        <input class="hide" name="objectId" type="number" value="{{ object.id }}">
-                        <button class="waves-effect waves-light btn" type="submit">Je suis interessé</button>
-                    </form>
-                {% endif %}
+
+                    {% if app.user in object.pretenders %}
+                        <form action="{{ path('objects_dontpretend') }}" method="POST">
+                            <input class="hide" name="objectId" type="number" value="{{ object.id }}">
+                            <button class="waves-effect waves-light btn" type="submit">Je ne suis plus interessé</button>
+                        </form>
+                    {% else %}
+                        <form action="{{ path('objects_pretend') }}" method="POST">
+                            <input class="hide" name="objectId" type="number" value="{{ object.id }}">
+                            <button class="waves-effect waves-light btn" type="submit">Je suis interessé</button>
+                        </form>
+                    {% endif %}
+
+                    <br>
+                    <a class="waves-effect waves-light btn green lighten-2" href="{{ path('objects_give', {'id': object.id}) }}">donner</a>
+
                 </div>
             </div>
         </div>

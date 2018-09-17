@@ -47,6 +47,7 @@
                 <td>{{ object.categorie }}</td>
                 <td>{{ object.received ? 'Oui' : 'Non' }}</td>
                 <td>
+                    <a class="waves-effect waves-light btn green lighten-2" href="{{ path('objects_give', {'id': object.id}) }}">donner</a>
                     <a class="waves-effect waves-light btn" href="{{ path('objects_show', {'id': object.id}) }}">Voir</a>
                     {# <a class="waves-effect waves-light btn" href="{{ path('objects_edit', {'id': object.id}) }}">edit</a> #}
                 </td>
@@ -59,5 +60,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('objects_new') }}">Create new</a>
+    <a class="waves-effect waves-light btn" href="{{ path('objects_new') }}">Donner un objet</a>
 {% endblock %}

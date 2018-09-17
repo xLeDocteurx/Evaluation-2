@@ -11,13 +11,14 @@
                         <li class="{{ app.request.get('_route') == 'objects_index' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_index') }}" title="">Les Dons</a></li>
                         <li class="{{ app.request.get('_route') == 'objects_mine' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_mine') }}" title="">Mes Annonces</a></li>
                         <li class="{{ app.request.get('_route') == 'objects_wanted' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_wanted') }}" title="">Mes voeux</a></li>
+                        {# <li class="{{ app.request.get('_route') == 'objects_gived' ? 'active' : '' }}"><a class="disabled" href="{{ path('objects_gived') }}" title="">Obtenus</a></li> #}
                         {# <li class="{{ app.request.get('_route') == 'xxx' ? 'active' : '' }}"><a class="disabled" href="" title="">Bottles sent</a></li> #}
                     {% else %}
                     {% endif %}
                 </ul>
 
-                <a class="center brand-logo hide-on-small-and-down" href="{{ path('acceuil') }}" title="ABITS - A Bottle Into The Sea">EVAL</a>
-                <a class="center brand-logo hide-on-med-and-up" href="{{ path('acceuil') }}" title="ABITS - A Bottle Into The Sea"><i class="material-icons">message</i></a>
+                <a class="center brand-logo hide-on-small-and-down" href="{{ path('acceuil') }}" title="ABITS - A Bottle Into The Sea">Ne jettez plus</a>
+                <a class="center brand-logo hide-on-med-and-up" href="{{ path('acceuil') }}" title="ABITS - A Bottle Into The Sea"><i class="material-icons">message</i> NJP</a>
 
                 <ul id="nav-mobile-r" class="right hide-on-small-and-down">
                     {% if app.user %}

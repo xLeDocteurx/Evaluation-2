@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Objects{% endblock %}
+
+{% block body %}
+    <h1 class="center-align">{{ object.title }}</h1>
+
+    <div class="row">
+        <div class="col s8 offset-s2">
+            <div class="card">
+                <div class="card-content">
+                        {{ object.title }}
+                </div>
+                <div class="card-content">
+                    
+
+                            {% for pretender in object.pretenders %}
+                                <form action="{{ path('objects_giveAction', {'id': object.id}) }}" method="POST">
+                                    <select id="pretender_select" name="pretender" form="carform">
+                                        <option value="{{ pretender.username }}">{{ pretender.username }}</option>
+                                    </select>
+
+                                    <button class="waves-effect waves-light btn" type="submit">Donner</button>
+                                </form>
+                            {% else %}
+                                Il n'y a aucun demandeur pour ce don
+                            {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="{{ path('objects_index') }}">back to list</a>
+
+    <a href="{{ path('objects_edit', {'id': object.id}) }}">edit</a>
+
+    {{ include('objects/_delete_form.html.twig') }}
+{% endblock %}

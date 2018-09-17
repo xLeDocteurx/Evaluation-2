@@ -10,10 +10,10 @@
             <tr>
                 <th>Id</th>
                 <th>Image</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Description</th>
                 <th>Categorie</th>
-                <th>Received</th>
+                <th>Disponible</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,10 +25,11 @@
                 <td>{{ object.title }}</td>
                 <td>{{ object.description }}</td>
                 <td>{{ object.categorie }}</td>
-                <td>{{ object.received ? 'Yes' : 'No' }}</td>
+                <td>{{ object.received ? 'Non' : 'Oui' }}</td>
                 <td>
-                    <a class="waves-effect waves-light btn" href="{{ path('objects_show', {'id': object.id}) }}">show</a>
-                    <a class="waves-effect waves-light btn" href="{{ path('objects_edit', {'id': object.id}) }}">edit</a>
+                    <a class="waves-effect waves-light btn green lighten-2" href="{{ path('objects_give', {'id': object.id}) }}">donner</a>
+                    <a class="waves-effect waves-light btn" href="{{ path('objects_show', {'id': object.id}) }}">voir</a>
+                    <a class="waves-effect waves-light btn" href="{{ path('objects_edit', {'id': object.id}) }}">editer</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +40,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('objects_new') }}">Create new</a>
+    <a class="waves-effect waves-light btn" href="{{ path('objects_new') }}">Donner un objet</a>
 {% endblock %}

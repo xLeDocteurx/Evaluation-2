@@ -9,18 +9,13 @@
     <div class="col s10 offset-s1">
         <div class="card">
             <div class="card-content">
-{% if app.user %}
                 <p>
-                    <h2 class="center-align">Welcome {{ app.user.username }} !</h2>
+                    Endroit en toute convivialité pour donner ce que vous n'utilisez plus !
+                </p>
 
-                </p>
-{% else %}
-                <p>
-                    <h2 class="center-align">Bienvenu Ne jettez plus !</h2>
-                    <h3 class="center-align">Vous n'êtes pas connecté</h3>
-                
-                </p>
-{% endif %}
+                {% if app.user %}
+                {% else %}
+                {% endif %}
             </div>
         </div>
     </div>

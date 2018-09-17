@@ -47,6 +47,14 @@ body {
     display: block;
 }
 
+#objects_taker {
+    display: block;
+}
+
+#pretender_select {
+    display: block;
+}
+
 .index_image {
     height: 100px;
 }

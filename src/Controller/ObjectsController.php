@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
 use App\Entity\Objects;
 use App\Form\ObjectsType;
 use App\Repository\ObjectsRepository;
@@ -82,6 +83,43 @@ class ObjectsController extends AbstractController
             'objects' => $userObjects,
         ]);
     }
+
+    // /**
+    //  * @Route("/gived", name="objects_gived", methods="GET")
+    //  */
+    // public function gived(ObjectsRepository $objectsRepository) {
+
+    //     return $this->render('objects/index.html.twig', [
+    //         'objects' => $objectsRepository->findBy(
+    //             array('received' => true),
+    //             array('id' => 'DESC')
+    //         ),
+    //     ]);
+    // }
+
+    /**
+     * @Route("/give/{id}", name="objects_give", methods="GET|POST")
+     */
+    public function give(Objects $object): Response
+    {
+        return $this->render('objects/give.html.twig', ['object' => $object]);
+    }
+
+    /**
+     * @Route("/give/{id}/action", name="objects_giveAction", methods="GET|POST")
+     */
+    public function giveAction(Objects $object, Users $user): Response
+    {
+            $object->setTaker($user);
+            $object->setReceived(true);
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($object);
+            $em->flush();
+
+            return $this->redirectToRoute('objects_mine');
+    }
+
 
     /**
      * @Route("/new", name="objects_new", methods="GET|POST")

@@ -36,7 +36,9 @@ class ObjectsType extends AbstractType
             // ->add('received')
             // ->add('giver')
             // ->add('pretenders')
-            // ->add('taker')
+            // ->add('taker', ChoiceType::class, array(
+
+            // ))
         ;
     }
 
